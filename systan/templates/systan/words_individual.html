@@ -1,0 +1,96 @@
+{% extends 'systan/index2.html' %}
+{% load static %}
+{% block title %}Systan Words{% endblock %}
+{% block content %}
+<div class="game-mode">
+    <p>シスタン:</p>
+    <a href="{% url 'systan:words_individual' student_id %}" class="now">単語</a>
+    <a href="{% url 'systan:phrases_individual' student_id %}">フレーズ</a>
+</div>
+<form action="{% url 'systan:words' %}" method="post">
+    {% csrf_token %}
+    <input id="student_id" name="student_id" type="text" placeholder="現在の生徒番号:{{student_id}}" required>
+    <input id="submit" type="submit" value="決定">
+</form>
+<div class="supplement">
+    <p>前回の学習日</p>
+    <p>{{latest_login}}</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image2.png' %}" alt="">
+            <h1>復習</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage1' 'review' student_id %}">Stage1</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage2' 'review' student_id %}">Stage2</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage3' 'review' student_id %}">Stage3</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage4' 'review' student_id %}">Stage4</a>
+        </div>
+    </div>
+    <p>前回間違えた問題から出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image3.png' %}" alt="">
+            <h1>テスト</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage1' 'random' student_id %}">Stage1</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage2' 'random' student_id %}">Stage2</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage3' 'random' student_id %}">Stage3</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage4' 'random' student_id %}">Stage4</a>
+        </div>
+    </div>
+    <p>単語からランダムに出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image4.png' %}" alt="">
+            <h1>テスト</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage1' 'all' student_id %}">Stage1</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage2' 'all' student_id %}">Stage2</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage3' 'all' student_id %}">Stage3</a>
+            <a href="{% url 'systan:tests_individual' 'words' 'Stage4' 'all' student_id %}">Stage4</a>
+        </div>
+    </div>
+    <p>単語から全て出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image5.png' %}" alt="">
+            <h1>確認</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:show_individual' 'words' 'Stage1' 'review' student_id %}">Stage1</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage2' 'review' student_id %}">Stage2</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage3' 'review' student_id %}">Stage3</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage4' 'review' student_id %}">Stage4</a>
+        </div>
+    </div>
+    <p>前回間違えた問題を確認</p>
+    </div>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image6.png' %}" alt="">
+            <h1>学習</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:show_individual' 'words' 'Stage1' 'all' student_id %}">Stage1</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage2' 'all' student_id %}">Stage2</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage3' 'all' student_id %}">Stage3</a>
+            <a href="{% url 'systan:show_individual' 'words' 'Stage4' 'all' student_id %}">Stage4</a>
+        </div>
+    </div>
+    <p>新しい単語を学習</p>
+    </div>
+</div>
+{% endblock %}

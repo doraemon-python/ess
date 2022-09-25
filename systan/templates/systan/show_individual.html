@@ -1,0 +1,65 @@
+{% extends 'systan/index2.html' %}
+{% block title %}確認{% endblock %}
+{% load static %}
+{% block content %} 
+{% if english_list %}
+<div class="table">
+    <ul>
+        {% for eng in english_list %}
+        <li>{{eng}}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for jap in japanese_list %}
+        <li>{{jap}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<div class="game-mode">
+    <p>シスタン:</p>
+    <a href="{% url 'systan:words_individual' student_id %}" class="now">単語</a>
+    <a href="{% url 'systan:phrases_individual' student_id %}">フレーズ</a>
+</div>
+<div class="non-incorrect">
+    <div class="message">
+        <p>間違えた問題はありません。</p>
+        <p>他のモードを選択してください。</p>
+    </div>
+    <h1 class="menu">単語</h1>
+    <div class="contents">
+        <div class="detail">
+            <div class="headline">
+                <img src="{% static 'systan/picture/image5.png' %}" alt="">
+                <h1>確認</h1>
+            </div>
+            <div class="select-btn">
+                <a href="{% url 'systan:show_individual' 'words' 'Stage1' 'review' student_id %}">Stage1</a>
+                <a href="{% url 'systan:show_individual' 'words' 'Stage2' 'review' student_id %}">Stage2</a>
+                <a href="{% url 'systan:show_individual' 'words' 'Stage3' 'review' student_id %}">Stage3</a>
+                <a href="{% url 'systan:show_individual' 'words' 'Stage4' 'review' student_id %}">Stage4</a>
+            </div>
+        </div>
+        <p>前回間違えた問題を確認</p>
+    </div>
+    <h1 class="menu">フレーズ</h1>
+    <div class=""></div>
+    <div class="contents">
+        <div class="detail">
+            <div class="headline">
+                <img src="{% static 'systan/picture/image5.png' %}" alt="">
+                <h1>確認</h1>
+            </div>
+            <div class="select-btn">
+                <a href="{% url 'systan:show_individual' 'phrases' 'Stage1' 'review' student_id %}">Stage1</a>
+                <a href="{% url 'systan:show_individual' 'phrases' 'Stage2' 'review' student_id %}">Stage2</a>
+                <a href="{% url 'systan:show_individual' 'phrases' 'Stage3' 'review' student_id %}">Stage3</a>
+                <a href="{% url 'systan:show_individual' 'phrases' 'Stage4' 'review' student_id %}">Stage4</a>
+                <a href="{% url 'systan:show_individual' 'phrases' 'Stage5' 'review' student_id %}">Stage5</a>
+            </div>
+        </div>
+        <p>前回間違えた問題を確認</p>
+    </div>
+</div>
+{% endif %} 
+{% endblock %}

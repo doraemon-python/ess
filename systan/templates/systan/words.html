@@ -1,0 +1,97 @@
+{% extends 'systan/index1.html' %}
+{% load static %}
+{% block title %}Systan Words{% endblock %}
+{% block content %}
+<div class="game-mode">
+    <p>シスタン:</p>
+    <a href="{% url 'systan:words' %}" class="now">単語</a>
+    <a href="{% url 'systan:phrases' %}">フレーズ</a>
+</div>
+<form action="{% url 'systan:words' %}" method="post">
+    {% csrf_token %}
+    <input id="student_id" name="student_id" type="text" placeholder="生徒番号下3桁を入力" required>
+    <input id="submit" type="submit" value="決定">
+</form>
+{% if error_message %}
+<p class="supplement">入力できる文字は3桁の整数のみです。</p>
+<p class="supplement">数字を半角で入力してください。</p>
+{% endif %}
+<p class="supplement">生徒番号<span>下3桁</span>を入力することで、間違えた問題を登録、確認できるようになります。</p>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image2.png' %}" alt="">
+            <h1>復習</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:login_prompt' %}">Stage1</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage2</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage3</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage4</a>
+        </div>
+    </div>
+    <p>前回間違えた問題から出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image3.png' %}" alt="">
+            <h1>テスト</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:tests' 'words' 'Stage1' 'random' %}">Stage1</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage2' 'random' %}">Stage2</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage3' 'random' %}">Stage3</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage4' 'random' %}">Stage4</a>
+        </div>
+    </div>
+    <p>単語からランダムに出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image4.png' %}" alt="">
+            <h1>テスト</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:tests' 'words' 'Stage1' 'all' %}">Stage1</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage2' 'all' %}">Stage2</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage3' 'all' %}">Stage3</a>
+            <a href="{% url 'systan:tests' 'words' 'Stage4' 'all' %}">Stage4</a>
+        </div>
+    </div>
+    <p>単語から全て出題</p>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image5.png' %}" alt="">
+            <h1>確認</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:login_prompt' %}">Stage1</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage2</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage3</a>
+            <a href="{% url 'systan:login_prompt' %}">Stage4</a>
+        </div>
+    </div>
+    <p>前回間違えた問題を確認</p>
+    </div>
+</div>
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image6.png' %}" alt="">
+            <h1>学習</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url 'systan:show' 'words' 'Stage1' 'all' %}">Stage1</a>
+            <a href="{% url 'systan:show' 'words' 'Stage2' 'all' %}">Stage2</a>
+            <a href="{% url 'systan:show' 'words' 'Stage3' 'all' %}">Stage3</a>
+            <a href="{% url 'systan:show' 'words' 'Stage4' 'all' %}">Stage4</a>
+        </div>
+    </div>
+    <p>新しい単語を学習</p>
+    </div>
+</div>
+{% endblock %}

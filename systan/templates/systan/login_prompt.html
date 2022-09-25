@@ -1,0 +1,45 @@
+{% extends 'systan/index1.html' %}
+{% block title %}ログインしてください{% endblock %}
+{% load static %}
+{% block content %}
+<div class="non-incorrect">
+    <div class="message">
+        <p>この機能は生徒番号がないと使えません。</p>
+        <p>トップページから入力してください。</p>
+    </div>
+    <h1 class="menu">単語</h1>
+    <div class="contents">
+        <div class="detail">
+            <div class="headline">
+                <img src="{% static 'systan/picture/image3.png' %}" alt="">
+                <h1>テスト</h1>
+            </div>
+            <div class="select-btn">
+                <a href="{% url 'systan:tests' 'words' 'Stage1' 'random' %}">Stage1</a>
+                <a href="{% url 'systan:tests' 'words' 'Stage2' 'random' %}">Stage2</a>
+                <a href="{% url 'systan:tests' 'words' 'Stage3' 'random' %}">Stage3</a>
+                <a href="{% url 'systan:tests' 'words' 'Stage4' 'random' %}">Stage4</a>
+            </div>
+        </div>
+        <p>単語からランダムに出題</p>
+    </div>
+    <h1 class="menu">フレーズ</h1>
+    <div class=""></div>
+    <div class="contents">
+        <div class="detail">
+            <div class="headline">
+                <img src="{% static 'systan/picture/image3.png' %}" alt="">
+                <h1>テスト</h1>
+            </div>
+            <div class="select-btn">
+                <a href="{% url 'systan:tests' 'phrases' 'Stage1' 'random' %}">Stage1</a>
+                <a href="{% url 'systan:tests' 'phrases' 'Stage2' 'random' %}">Stage2</a>
+                <a href="{% url 'systan:tests' 'phrases' 'Stage3' 'random' %}">Stage3</a>
+                <a href="{% url 'systan:tests' 'phrases' 'Stage4' 'random' %}">Stage4</a>
+                <a href="{% url 'systan:tests' 'phrases' 'Stage5' 'random' %}">Stage5</a>
+            </div>
+        </div>
+        <p>フレーズからランダムに出題</p>
+    </div>
+</div>
+{% endblock %}

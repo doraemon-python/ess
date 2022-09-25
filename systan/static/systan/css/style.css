@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    font-weight: normal;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    width: 90%;
+    height: 60px;
+    margin: 10px 5%;
+    background-color: #223a70;
+    border-radius: 30px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    z-index: 4;
+}
+
+header .now-app {
+    width: 46px;
+    height: 46px;
+    margin: auto 10px;
+}
+
+header .now-app img {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    background-color: white;
+    border-radius: 23px;
+}
+
+header a {
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+header a img {
+    margin: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+header nav {
+    width: 46px;
+    height: 46px;
+    margin: auto 10px;
+    cursor: pointer;
+}
+
+header nav .bar {
+    margin-top: 10px;
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.5s;
+}
+
+header .open .bar:nth-child(1) {
+    transform: translateY(12px) rotate(405deg);
+}
+
+header .open .bar:nth-child(2) {
+    transform: translateX(100px);
+}
+
+header .open .bar:nth-child(3) {
+    transform: translateY(-12px) rotate(-405deg);
+}
+
+.nav-menu {
+    position: fixed;
+    top: -1000px;
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    padding-top: 80px;
+    transition: all 0.5s;
+    z-index: 3;
+}
+
+.nav-menu li {
+    width: 80%;
+    margin: 20px auto;
+    border-bottom: solid 1px white;
+    text-align: center;
+}
+
+.nav-menu li a {
+    font-size: 0.8em;
+    color: white;
+}
+
+.open .nav-menu {
+    top: 0px; 
+}
+
+.air {
+    width: 100vw;
+    height: 80px;
+}
+
+.game-mode {
+    width: 90%;
+    height: 40px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.game-mode p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.5em;
+}
+
+.game-mode a {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    margin: 0px 10px;
+    letter-spacing: 0.3em;
+    border-radius: 15px;
+    border: solid 1px gray;
+    font-size: 0.5em;
+    color: black;
+    white-space: pre;
+    overflow-x: scroll;
+}
+
+.game-mode .now {
+    background-color: gray;
+    color: white;
+}
+
+form {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#student_id {
+    width: 75%;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 22px 0 0 22px;
+    font-size: 0.5em;
+}
+
+#submit {
+    width: 25%;
+    height: 44px;
+    border-radius: 0 22px 22px 0;
+    font-size: 0.7em;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.supplement {
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 0.5em;
+}
+
+.supplement span {
+    font-weight: bold;
+    font-size: 1em;
+    color: red;
+}
+
+.supplement p {
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.contents {
+    width: 100vw;
+}
+
+.contents .detail {
+    width: 100%;
+    display: flex;
+} 
+
+.contents:nth-child(even) .detail {
+    flex-direction: row-reverse;
+}
+
+.contents:nth-child(even) {
+    padding-bottom: 10px;
+    background-color: #f2f2f2;
+}
+
+.contents .detail .headline {
+    width: 30%;
+}
+
+.contents .detail .headline img {
+    display: block;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    margin-bottom: 0;
+}
+
+.contents .detail .headline h1 {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 0.8em;
+    text-align: center;
+    letter-spacing: 0.2em;
+}
+
+.contents .detail .select-btn {
+    width: 70%;
+}
+
+.contents .detail .select-btn a {
+    display: block;
+    width: 70%;
+    height: 50px;
+    line-height: 50px;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.contents .detail .select-btn a:nth-child(1) {
+    border: solid 1px green;
+    color: green;
+}
+
+.contents .detail .select-btn a:nth-child(2) {
+    border: solid 1px blue;
+    color: blue;
+}
+
+.contents .detail .select-btn a:nth-child(3) {
+    border: solid 1px orange;
+    color: orange;
+}
+
+.contents .detail .select-btn a:nth-child(4) {
+    border: solid 1px red;
+    color: red;
+}
+
+.contents .detail .select-btn a:nth-child(5) {
+    border: solid 1px purple;
+    color: purple;
+}
+
+.contents p {
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* ここからクイズ部分 */
+
+.game form {
+    display: block;
+    width: 100%;
+}
+
+
+.gamepad {
+    width: 100%;
+    height: 410px;
+    background: gainsboro;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+}
+
+.exit {
+    display: block;
+    width: 30%;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px auto;
+    text-align: center;
+    border: solid 1px red;
+    color: red;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.question {
+    width: 90%;
+    height: 70px;
+    line-height: 70px;
+    margin: 20px 5%;
+    background-color: #d1e7dd;
+    color: #198754;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 230px;
+    white-space: pre;
+    overflow-x: scroll;
+}
+
+.answer {
+    width: 80%;
+    margin: 0 auto;
+    height: 70px;
+    line-height: 70px;
+    border: solid 1px #198754;
+    border-radius: 10px;
+    text-align: center;
+    color: #198754;
+    position: fixed;
+    bottom: 150px;
+    left: 10%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    white-space: pre;
+    overflow-x: scroll;
+}
+
+.select {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 50px;
+}
+
+.select button {
+    width: 40%;
+    height: 70px;
+}
+
+.select #correct {
+    border: solid 0px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 10px;
+}
+
+.select #incorrect {
+    border: solid 0px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 10px;
+}
+
+.non-incorrect .message {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    border: solid 1px #198754;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.non-incorrect .message p {
+    margin: 0 auto;
+    width: 90%;
+    color: #198754;
+    font-size: 0.6em;
+}
+
+.non-incorrect .menu {
+    display: block;
+    width: 60%;
+    margin: 20px auto;
+    margin-top: 40px;
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
+    text-align: center;
+}
+
+.table ul {
+    position: absolute;
+    width: 90%;
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-bottom: 500px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.table ul:nth-child(1) {
+    z-index: 1;
+}
+
+.table ul:nth-child(1) li {
+    margin-bottom: 45px;
+    height: 45px;
+    padding-left: 10px;
+    background-color: #f2f2f2;
+    white-space: pre;
+    display: flex;
+}
+
+.table ul li span {
+    width: 80%;
+    line-height: 45px;
+    overflow-x: scroll;
+    font-size: 0.8em;
+}
+
+.table ul li input {
+    width: 40px;
+    height: 40px;
+    margin: auto 10px auto auto;
+    border-radius: 20px;
+}
+
+.table ul:nth-child(2) li {
+    margin-top: 45px;
+    line-height: 44px;
+    padding-left: 40px;
+    white-space: pre;
+    overflow-x: scroll;
+    font-size: 0.7em;
+    border-bottom: solid 1px gray;
+}
+
+.game-end input {
+    border: none;
+    width: 40%;
+    height: 70px;
+    background-color: #198754;
+    color: white;
+    border-radius: 10px;
+    position: fixed;
+    left: 30%;
+    bottom: 50px;
+    z-index: 1;
+    transition: all 0.5s;
+}
+
+.game-end .close {
+    transform: translateY(300px);
+}
