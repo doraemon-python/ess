@@ -95,7 +95,7 @@ def game_set(type, stage, mode, *student_id):
                 for i in object_list:
                     japanese_list.append(Phrases.objects.get(id=i.phrases_id).japanese)
                     english_list.append(Phrases.objects.get(id=i.phrases_id).english)
-                    index_list.append(i.words_id)
+                    index_list.append(i.phrases_id)
             
     return japanese_list, english_list, index_list
 
@@ -116,13 +116,13 @@ def words_register_false(all_id, false_id, student_id):
 def phrases_register_false(all_id, false_id, student_id):
     for id in all_id:
         if id in false_id:
-            if PhrasesFalse.objects.filter(student_id=student_id, words_id=id).exists():
+            if PhrasesFalse.objects.filter(student_id=student_id, phrases_id=id).exists():
                 pass
             else:
-                PhrasesFalse.objects.create(student_id=student_id, words_id=id)
+                PhrasesFalse.objects.create(student_id=student_id, phrases_id=id)
         else:
-            if PhrasesFalse.objects.filter(student_id=student_id, words_id=id).exists():
-                PhrasesFalse.objects.filter(student_id=student_id, words_id=id).delete()
+            if PhrasesFalse.objects.filter(student_id=student_id, phrases_id=id).exists():
+                PhrasesFalse.objects.filter(student_id=student_id, phrases_id=id).delete()
             else:
                 pass
     Student.objects.get(id=student_id).save()
