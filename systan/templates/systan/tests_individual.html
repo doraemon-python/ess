@@ -50,7 +50,7 @@
         question_display.innerHTML = question_list[i];
         answer_display.innerHTML = "解答を表示";
         var li1 = document.createElement('li');
-        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox">'
+        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox" name="false_id" value="'+{{index_list}}[i-1]+'">'
         var li2 = document.createElement('li');
         li2.innerText = answer_list[i-1]
         eng.prepend(li1);
@@ -64,7 +64,7 @@
         question_display.innerHTML = question_list[i];
         answer_display.innerHTML = "解答を表示";
         var li1 = document.createElement('li');
-        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox" checked>'
+        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox" name="false_id" value="'+{{index_list}}[i-1]+'" checked>'
         var li2 = document.createElement('li');
         li2.innerText = answer_list[i-1]
         eng.prepend(li1);
