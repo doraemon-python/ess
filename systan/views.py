@@ -7,30 +7,36 @@ def game_set(type, stage, mode, *student_id):
     japanese_list = []
     english_list = []
     index_list = []
+    add_number = 0
     if type == 'words':
         object_list = Words.objects.all()
     elif type == 'phrases':
         object_list = Phrases.objects.all()
     if stage == 'Stage1':
         object_list = object_list[:600]
+        add_number = 0
     elif stage == 'Stage2':
         object_list = object_list[600:1200]
+        add_number = 600
     elif stage == 'Stage3':
         object_list = object_list[1200:1700]
+        add_number = 1200
     elif stage == 'Stage4':
         object_list = object_list[1700:2027]
+        add_number = 1700
     elif stage == 'Stage5':
         object_list = object_list[2027:]
+        add_number = 2027
     if mode == 'random':
         for i in  random.sample(range(len(object_list)), 20):
             japanese_list.append(object_list[i].japanese)
             english_list.append(object_list[i].english)
-            index_list.append(i+1)
+            index_list.append(i+1+add_number)
     elif mode == 'all':
         for i in range(len(object_list)):
             japanese_list.append(object_list[i].japanese)
             english_list.append(object_list[i].english)
-            index_list.append(i+1)
+            index_list.append(i+1+add_number)
     elif mode == 'review':
         student_id = student_id[0]
         if type == 'words':
