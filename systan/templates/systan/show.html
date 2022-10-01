@@ -1,6 +1,8 @@
-{% extends 'systan/index1.html' %}
+{% extends 'systan/layout/index.html' %}
 {% block title %}確認{% endblock %}
+{% load static %}
 {% block content %} 
+{% if english_list %}
 <div class="table">
     <ul>
         {% for eng in english_list %}
@@ -13,4 +15,18 @@
         {% endfor %}
     </ul>
 </div>
+{% else %}
+{% include 'systan/layout/game_mode.html' %}
+<div class="non-incorrect">
+    <div class="message">
+        <p>間違えた問題はありません。</p>
+        <p>他のモードを選択してください。</p>
+    </div>
+    <h1 class="menu">単語</h1>
+    {% include 'systan/layout/words_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" mode="review" explain="前回間違えた問題を確認" %}
+    <h1 class="menu">フレーズ</h1>
+    <div class=""></div>
+    {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" mode="review" explain="前回間違えた問題を確認" %}
+</div>
+{% endif %} 
 {% endblock %}

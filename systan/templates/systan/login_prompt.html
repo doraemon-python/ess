@@ -1,45 +1,48 @@
-{% extends 'systan/index1.html' %}
-{% block title %}ログインしてください{% endblock %}
 {% load static %}
-{% block content %}
-<div class="non-incorrect">
-    <div class="message">
-        <p>この機能は生徒番号がないと使えません。</p>
-        <p>トップページから入力してください。</p>
-    </div>
-    <h1 class="menu">単語</h1>
-    <div class="contents">
-        <div class="detail">
-            <div class="headline">
-                <img src="{% static 'systan/picture/image3.png' %}" alt="">
-                <h1>テスト</h1>
-            </div>
-            <div class="select-btn">
-                <a href="{% url 'systan:tests' 'words' 'Stage1' 'random' %}">Stage1</a>
-                <a href="{% url 'systan:tests' 'words' 'Stage2' 'random' %}">Stage2</a>
-                <a href="{% url 'systan:tests' 'words' 'Stage3' 'random' %}">Stage3</a>
-                <a href="{% url 'systan:tests' 'words' 'Stage4' 'random' %}">Stage4</a>
-            </div>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'systan/css/style.css' %}">
+        <title>ログインしてください</title>
+    </head>
+<body>
+    <header>
+        <div class="now-app"><img src="{% static 'systan/picture/systan.jpg' %}" alt=""></div>
+        <a href="{% url 'systan:login_prompt' %}"><img src="{% static 'systan/picture/image1.png' %}" alt=""></a>
+        <nav>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </nav>
+    </header>
+    <div class="active">
+        <div class="nav-menu">
+            <ul>
+                <li><a href="{% url 'systan:login_prompt' %}">シスタン・単語</a></li>
+                <li><a href="{% url 'systan:login_prompt' %}">シスタン・フレーズ</a></li>
+                <li><a href="{% url 'systan:login_prompt' %}">英単語ターゲット1900</a></li>
+                <li><a href="{% url 'systan:login_prompt' %}">英熟語ターゲット1000</a></li>
+                <li><a href="{% url 'systan:login_prompt' %}">鉄壁</a></li>
+            </ul>
         </div>
-        <p>単語からランダムに出題</p>
     </div>
-    <h1 class="menu">フレーズ</h1>
-    <div class=""></div>
-    <div class="contents">
-        <div class="detail">
-            <div class="headline">
-                <img src="{% static 'systan/picture/image3.png' %}" alt="">
-                <h1>テスト</h1>
-            </div>
-            <div class="select-btn">
-                <a href="{% url 'systan:tests' 'phrases' 'Stage1' 'random' %}">Stage1</a>
-                <a href="{% url 'systan:tests' 'phrases' 'Stage2' 'random' %}">Stage2</a>
-                <a href="{% url 'systan:tests' 'phrases' 'Stage3' 'random' %}">Stage3</a>
-                <a href="{% url 'systan:tests' 'phrases' 'Stage4' 'random' %}">Stage4</a>
-                <a href="{% url 'systan:tests' 'phrases' 'Stage5' 'random' %}">Stage5</a>
-            </div>
-        </div>
-        <p>フレーズからランダムに出題</p>
-    </div>
-</div>
-{% endblock %}
+    <div class="air"></div>
+    <main>
+        <p class="login_message">このサイトを利用するには生徒番号が必要です。</p>
+        <p class="login_message">生徒番号下三桁を入力することで、間違えた問題の登録、復習ができます。</p>
+        <p class="login_message">遷移先のページをブラウザに登録することで、次回移行生徒番号の入力を省略できます。</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input id="student_id" name="student_id" type="text" placeholder="生徒番号下三桁を入力" required>
+            <input id="submit" type="submit" value="決定">
+        </form>
+        {% if error_message %}
+        <div class="error_message"><p>{{error_message}}</p></div>
+        {% endif %}
+    </main>
+    <script src="{% static 'systan/js/script.js' %}"></script>
+</body>
+</html>

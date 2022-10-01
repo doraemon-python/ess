@@ -1,0 +1,10 @@
+<div class="dash_bord">
+    <div class="bord-header">
+        <h1>生徒番号:{{student_id}}</h1>
+    </div>
+    <div class="bord_body">
+        <p>前回の学習日</p>
+        <p>{% if latest_login %}{{latest_login | date:'m/d H:i'}}{% else %}なし{% endif %}</p>
+    </div>
+</div>
+<div class=""></div>

@@ -1,10 +1,13 @@
-{% extends 'systan/index1.html' %}
+{% extends 'systan/layout/index.html' %}
+{% load static %}
 {% block title %}テスト{% endblock %}
-{% block content %}
+{% block content %} 
+{% if japanese_list %}
 <div class="game">
     <form action="{% url 'systan:game_data_post' %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="all_id" value="{{index_list}}">
+        <input type="hidden" name="student_id" value="{{student_id}}">
         <input type="hidden" name="type" value="{{type}}">
         <div class="table">
             <ul class="english"></ul>
@@ -16,7 +19,7 @@
     </form>
 </div>
 <div class="gamepad">
-    <a class="exit" href="{% url 'systan:words' %}">中断</a>
+    <a class="exit" href="{% url 'systan:home' type student_id %}">中断</a>
     <div class="question">ここに問題が表示されます。</div>
     <div class="answer">解答を表示</div>
     <div class="select">
@@ -28,48 +31,22 @@
     {% autoescape off %}
     const question_list = {{english_list}};
     const answer_list = {{japanese_list}};
+    const index_list = {{index_list}};
     {% endautoescape %}
-
-    const question_display = document.querySelector('.question');
-    const answer_display = document.querySelector('.answer');
-    const correct_btn = document.querySelector('#correct');
-    const incorrect_btn = document.querySelector('#incorrect');
-    const eng = document.querySelector('.english');
-    const jap = document.querySelector('.japanese');
-
-    let i = 0;
-    question_display.innerHTML = question_list[i];
-    answer_display.addEventListener('click', (e) => {
-        answer_display.innerHTML = answer_list[i];
-    });
-    correct_btn.addEventListener('click', (e) => {
-        i++
-        question_display.innerHTML = question_list[i];
-        answer_display.innerHTML = "解答を表示";
-        var li1 = document.createElement('li');
-        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox">'
-        var li2 = document.createElement('li');
-        li2.innerText = answer_list[i-1]
-        eng.prepend(li1);
-        jap.prepend(li2);
-        if(i>=question_list.length){
-            document.querySelector('.gamepad').style.display = 'none';
-        };
-    });
-    incorrect_btn.addEventListener('click', (e) => {
-        i++
-        question_display.innerHTML = question_list[i];
-        answer_display.innerHTML = "解答を表示";
-        var li1 = document.createElement('li');
-        li1.innerHTML = '<span>'+question_list[i-1]+'</span><input type="checkbox" checked>'
-        var li2 = document.createElement('li');
-        li2.innerText = answer_list[i-1]
-        eng.prepend(li1);
-        jap.prepend(li2);
-        table.insertRow(0).innerHTML = '<td>'+question_list[i-1]+'</td><td>'+answer_list[i-1]+'</td><td><input type="checkbox" name="false_id" value="'+{{index_list}}[i-1]+'" checked></td>';
-        if(i>=question_list.length){
-            document.querySelector('.gamepad').style.display = 'none';
-        };
-    });
 </script>
+<script src="{% static 'systan/js/tests.js' %}"></script>
+{% else %}
+{% include 'systan/layout/game_mode.html' %}
+<div class="non-incorrect">
+    <div class="message">
+        <p>間違えた問題はありません。</p>
+        <p>他のモードを選択してください。</p>
+    </div>
+    <h1 class="menu">単語</h1>
+    {% include 'systan/layout/words_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="前回間違えた問題から出題" %}
+    <h1 class="menu">フレーズ</h1>
+    <div class=""></div>
+    {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="前回間違えた問題から出題" %}
+</div>
+{% endif %}
 {% endblock %}

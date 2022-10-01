@@ -1,0 +1,17 @@
+{% load static %}
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static picture %}" alt="">
+            <h1>{{headline}}</h1>
+        </div>
+        <div class="select-btn">
+            <a href="{% url url 'phrases' category 'Stage1' mode student_id %}">Stage1</a>
+            <a href="{% url url 'phrases' category 'Stage2' mode student_id %}">Stage2</a>
+            <a href="{% url url 'phrases' category 'Stage3' mode student_id %}">Stage3</a>
+            <a href="{% url url 'phrases' category 'Stage4' mode student_id %}">Stage4</a>
+            <a href="{% url url 'phrases' category 'Stage5' mode student_id %}">Stage5</a>
+        </div>
+    </div>
+    <p>{{explain}}</p>
+</div>

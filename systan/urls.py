@@ -4,14 +4,16 @@ from . import views
 app_name = 'systan'
 urlpatterns = [
     path('login/', views.login_prompt, name="login_prompt"),
-    path('words/', views.words, name='words'),
-    path('words/<student_id>/', views.words_individual, name='words_individual'),
-    path('phrases/', views.phrases, name='phrases'),
-    path('phrases/<student_id>/', views.phrases_individual, name='phrases_individual'),
-    path('tests/<type>/<stage>/<mode>/', views.tests, name='tests'),
-    path('tests/<type>/<stage>/<mode>/<student_id>/', views.tests_individual, name='tests_individual'),
-    path('show/<type>/<stage>/<mode>/', views.show, name='show'),
-    path('show/<type>/<stage>/<mode>/<student_id>/', views.show_individual, name='show_individual'),
+    path('<type>/<student_id>/', views.home, name='home'),
+    path('chapter_select/<type>/<category>/<stage>/<mode>/<student_id>/', views.chapter_select, name='chapter_select'),
+    path('<type>/<category>/<stage>/<chapter>/<mode>/<student_id>/', views.tests, name='tests'),
+    path('others/<type>/<student_id>', views.others, name='others'),
     path('game_data_post/', views.game_data_post, name='game_data_post'),
-    path('others/', views.others, name='others')
 ]
+
+# type: words, phrases
+# category: tests, show
+# stage: Stage1, 2, 3, 4, 5
+# chapter: int 1 ~ 3, 4, 5, 6 all
+# mode: review, random, all
+# student_id: int 1 ~ 999

@@ -1,0 +1,25 @@
+{% load static %}
+<div class="contents">
+    <div class="detail">
+        <div class="headline">
+            <img src="{% static 'systan/picture/image3.png' %}" alt="">
+            <h1>選択</h1>
+        </div>
+        <div class="select-btn">
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 1 mode student_id %}">{{chapter1}}</a>
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 2 mode student_id %}">{{chapter2}}</a>
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 3 mode student_id %}">{{chapter3}}</a>
+            {% if chapter4 %}
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 4 mode student_id %}">{{chapter4}}</a>
+            {% endif %}
+            {% if chapter5 %}
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 5 mode student_id %}">{{chapter5}}</a>
+            {% endif %}
+            {% if chapter6 %}
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 6 mode student_id %}">{{chapter6}}</a>
+            {% endif %}
+            <a class="chapter_selecter" href="{% url 'systan:tests' type category stage 'all' mode student_id %}">全て</a>
+        </div>
+    </div>
+    <p>問題番号を選択</p>
+</div>

@@ -1,0 +1,16 @@
+{% extends 'systan/layout/index.html' %}
+{% block title %}問題番号を選択{% endblock %}
+{% block content %}
+{% include 'systan/layout/game_mode.html' %}
+{% if stage == 'Stage1' %}
+{% include 'systan/layout/chapter_mode.html' with chapter1='1 ~ 100' chapter2='101 ~ 200' chapter3='201 ~ 300' chapter4='301 ~ 400' chapter5='401 ~ 500' chapter6='501 ~ 600' %}
+{% elif stage == 'Stage2' %}
+{% include 'systan/layout/chapter_mode.html' with chapter1='601 ~ 700' chapter2='701 ~ 800' chapter3='801 ~ 900' chapter4='901 ~ 1000' chapter5='1001 ~ 1100' chapter6='1101 ~ 1200' %}
+{% elif stage == 'Stage3' %}
+{% include 'systan/layout/chapter_mode.html' with chapter1='1201 ~ 1300' chapter2='1301 ~ 1400' chapter3='1401 ~ 1500' chapter4='1501 ~ 1600' chapter5='1601 ~ 1700' %}
+{% elif stage == 'Stage4' %}
+{% include 'systan/layout/chapter_mode.html' with chapter1='1701 ~ 1800' chapter2='1801 ~ 1900' chapter3='1901 ~ 2027' %}
+{% elif stage == 'Stage5' %}
+{% include 'systan/layout/chapter_mode.html' with chapter1='1 ~ 100' chapter2='101 ~ 200' chapter3='201 ~ 300' chapter4='301 ~ 400' %}
+{% endif %}
+{% endblock %}

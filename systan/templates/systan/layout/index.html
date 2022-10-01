@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="now-app"><img src="{% static 'systan/picture/systan.jpg' %}" alt=""></div>
-        <a href="{% url 'systan:words' %}"><img src="{% static 'systan/picture/image1.png' %}" alt=""></a>
+        <a href="{% url 'systan:home' type student_id %}"><img src="{% static 'systan/picture/image1.png' %}" alt=""></a>
         <nav>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -21,11 +21,11 @@
     <div class="active">
         <div class="nav-menu">
             <ul>
-                <li><a href="{% url 'systan:words' %}">シスタン・単語</a></li>
-                <li><a href="{% url 'systan:phrases' %}">シスタン・フレーズ</a></li>
-                <li><a href="{% url 'systan:others' %}">英単語ターゲット1900</a></li>
-                <li><a href="{% url 'systan:others' %}">英熟語ターゲット1000</a></li>
-                <li><a href="{% url 'systan:others' %}">鉄壁</a></li>
+                <li><a href="{% url 'systan:home' type student_id %}">シスタン・単語</a></li>
+                <li><a href="{% url 'systan:home' type student_id %}">シスタン・フレーズ</a></li>
+                <li><a href="{% url 'systan:others' type student_id %}">英単語ターゲット1900</a></li>
+                <li><a href="{% url 'systan:others' type student_id %}">英熟語ターゲット1000</a></li>
+                <li><a href="{% url 'systan:others' type student_id %}">鉄壁</a></li>
             </ul>
         </div>
     </div>

@@ -1,0 +1,14 @@
+{% if type == 'words' %}
+<div class="game-mode">
+    <p>シスタン:</p>
+    <a href="{% url 'systan:home' 'words' student_id %}" class="now">単語</a>
+    <a href="{% url 'systan:home' 'phrases' student_id %}">フレーズ</a>
+</div>
+
+{% elif type == 'phrases' %}
+<div class="game-mode">
+    <p>シスタン:</p>
+    <a href="{% url 'systan:home' 'words' student_id %}">単語</a>
+    <a href="{% url 'systan:home' 'phrases' student_id %}" class="now">フレーズ</a>
+</div>
+{% endif %}

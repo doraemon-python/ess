@@ -1,3 +1,5 @@
+/* reset css */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +15,8 @@ a {
 ul {
     list-style: none;
 }
+
+/* index.html */
 
 header {
     width: 90%;
@@ -111,6 +115,8 @@ header .open .bar:nth-child(3) {
     height: 80px;
 }
 
+/* game_mode.html */
+
 .game-mode {
     width: 90%;
     height: 40px;
@@ -144,6 +150,8 @@ header .open .bar:nth-child(3) {
     color: white;
 }
 
+/* login_prompt.html */
+
 form {
     display: flex;
     width: 80%;
@@ -167,24 +175,60 @@ form {
     color: white;
     border: none;
 }
-
-.supplement {
+.login_message {
     width: 80%;
-    margin: 10px auto;
+    margin: 20px auto;
+    font-size: 0.6em;
     text-align: center;
-    font-size: 0.5em;
+    border-bottom: solid 1px gray;
 }
 
-.supplement span {
-    font-weight: bold;
-    font-size: 1em;
-    color: red;
+.error_message {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    border: solid 1px #198754;
+    border-radius: 10px;
+    text-align: center;
 }
 
-.supplement p {
-    text-align: center;
-    font-size: 1.4em;
+.error_message p {
+    margin: 0 auto;
+    width: 90%;
+    color: #198754;
+    font-size: 0.6em;
 }
+
+/* dash_bord.html */
+
+.dash_bord {
+    width: 80%;
+    margin: 20px auto;
+    margin-top: 0;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px #198754;
+    color: #198754;
+}
+
+.dash_bord .bord-header {
+    height: 40px;
+    border-radius: 5px 5px 0 0 ;
+    background-color: #198754;
+}
+
+.dash_bord .bord-header h1 {
+    line-height: 40px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.dash_bord .bord_body p {
+    line-height: 40px;
+    font-size: 0.7em;
+}
+
+/* words_content, phrases_content.html */
 
 .contents {
     width: 100vw;
@@ -270,7 +314,48 @@ form {
     margin: 10px 0;
 }
 
-/* ここからクイズ部分 */
+/* chapter_select.html */
+
+.contents .detail .select-btn .chapter_selecter {
+    font-size: 0.7em;
+}
+
+.contents .detail .select-btn a:nth-child(1) {
+    border: solid 1px green;
+    color: green;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(2) {
+    border: solid 1px blue;
+    color: blue;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(3) {
+    border: solid 1px orange;
+    color: orange;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(4) {
+    border: solid 1px red;
+    color: red;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(5) {
+    border: solid 1px purple;
+    color: purple;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(6) {
+    border: solid 1px black;
+    color: black;
+}
+
+.contents .detail .select-btn .chapter_selecter:nth-child(7) {
+    border: solid 1px gray;
+    color: gray;
+}
+
+/* for quiz */
 
 .game form {
     display: block;
@@ -389,6 +474,8 @@ form {
     text-align: center;
 }
 
+/* for quiz table and show table  */
+
 .table ul {
     position: absolute;
     width: 90%;
@@ -397,6 +484,11 @@ form {
     margin-bottom: 500px;
     height: 45px;
     cursor: pointer;
+}
+
+.table ul li {
+    white-space: pre;
+    overflow-x: scroll;
 }
 
 .table ul:nth-child(1) {
@@ -408,13 +500,14 @@ form {
     height: 45px;
     padding-left: 10px;
     background-color: #f2f2f2;
-    white-space: pre;
     display: flex;
 }
 
 .table ul li span {
+    white-space: pre;
     width: 80%;
     line-height: 45px;
+    white-space: pre;
     overflow-x: scroll;
     font-size: 0.8em;
 }
@@ -430,8 +523,6 @@ form {
     margin-top: 45px;
     line-height: 44px;
     padding-left: 40px;
-    white-space: pre;
-    overflow-x: scroll;
     font-size: 0.7em;
     border-bottom: solid 1px gray;
 }
