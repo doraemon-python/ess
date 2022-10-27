@@ -1,5 +1,6 @@
 {% load static %}
 <div class="contents">
+    <p>{{explain}}</p>
     <div class="detail">
         <div class="headline">
             <img src="{% static picture %}" alt="">
@@ -12,5 +13,4 @@
             <a href="{% url url 'words' category 'Stage4' mode student_id %}">Stage4</a>
         </div>
     </div>
-    <p>{{explain}}</p>
 </div>

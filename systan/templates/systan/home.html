@@ -6,19 +6,19 @@
 {% if type == "words" %}
 {% include 'systan/layout/game_mode.html' %}
 {% include 'systan/layout/dash_bord.html' %}
-{% include 'systan/layout/words_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" category="tests" mode="review" explain="前回間違えた問題から出題" %}
+{% include 'systan/layout/words_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" category="tests" mode="review" explain="間違えた問題から出題" %}
 {% include 'systan/layout/words_contents.html' with picture='systan/picture/image3.png' url='systan:chapter_select' headline="テスト" category="tests" mode="random" explain="単語からランダムに出題" %}
 {% include 'systan/layout/words_contents.html' with picture='systan/picture/image4.png' url='systan:chapter_select' headline="テスト" category="tests" mode="all" explain="単語から全て出題" %}
-{% include 'systan/layout/words_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" category="show" mode="review" explain="前回間違えた問題を確認" %}
+{% include 'systan/layout/words_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" category="show" mode="review" explain="間違えた問題を確認" %}
 {% include 'systan/layout/words_contents.html' with picture='systan/picture/image6.png' url='systan:chapter_select' headline="学習" category="show" mode="all" explain="新しい単語を学習" %}
 
 {% elif type == "phrases" %}
 {% include 'systan/layout/game_mode.html' %}
 {% include 'systan/layout/dash_bord.html' %}
-{% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" category="tests" mode="review" explain="前回間違えた問題から出題" %}
+{% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" category="tests" mode="review" explain="間違えた問題から出題" %}
 {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image3.png' url='systan:chapter_select' headline="テスト" category="tests" mode="random" explain="フレーズからランダムに出題" %}
 {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image4.png' url='systan:chapter_select' headline="テスト" category="tests" mode="all" explain="フレーズから全て出題" %}
-{% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" category="show" mode="review" explain="前回間違えた問題を確認" %}
+{% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image5.png' url='systan:chapter_select' headline="確認" category="show" mode="review" explain="間違えた問題を確認" %}
 {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image6.png' url='systan:chapter_select' headline="学習" category="show" mode="all" explain="新しいフレーズを学習" %}
 {% endif %}
 

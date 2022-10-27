@@ -42,11 +42,8 @@
         <p>間違えた問題はありません。</p>
         <p>他のモードを選択してください。</p>
     </div>
-    <h1 class="menu">単語</h1>
-    {% include 'systan/layout/words_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="前回間違えた問題から出題" %}
-    <h1 class="menu">フレーズ</h1>
-    <div class=""></div>
-    {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="前回間違えた問題から出題" %}
+    {% include 'systan/layout/words_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="間違えた単語から出題" %}
+    {% include 'systan/layout/phrases_contents.html' with picture='systan/picture/image2.png' url='systan:chapter_select' headline="復習" mode="review" explain="間違えたフレーズから出題" %}
 </div>
 {% endif %}
 {% endblock %}

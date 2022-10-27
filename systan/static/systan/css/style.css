@@ -115,12 +115,16 @@ header .open .bar:nth-child(3) {
     height: 80px;
 }
 
+main {
+    margin-bottom: 30px;
+}
+
 /* game_mode.html */
 
 .game-mode {
     width: 90%;
-    height: 40px;
-    padding-bottom: 10px;
+    height: 30px;
+    padding: 10px 0;
     margin: 0 auto;
     display: flex;
 }
@@ -203,8 +207,7 @@ form {
 
 .dash_bord {
     width: 80%;
-    margin: 20px auto;
-    margin-top: 0;
+    margin: 10px auto;
     text-align: center;
     border-radius: 5px;
     border: solid 1px #198754;
@@ -231,22 +234,44 @@ form {
 /* words_content, phrases_content.html */
 
 .contents {
-    width: 100vw;
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
+.contents:nth-child(3n-2) {
+    background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+    
+}
+
+.contents:nth-child(3n-1) {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.contents:nth-child(3n) {
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    
+}
+
+.contents:nth-child(even) .detail {
+    flex-direction: row-reverse;
+}
+
+.contents p {
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .contents .detail {
     width: 100%;
     display: flex;
 } 
-
-.contents:nth-child(even) .detail {
-    flex-direction: row-reverse;
-}
-
-.contents:nth-child(even) {
-    padding-bottom: 10px;
-    background-color: #f2f2f2;
-}
 
 .contents .detail .headline {
     width: 30%;
@@ -280,79 +305,14 @@ form {
     margin: 30px auto;
     text-align: center;
     border-radius: 5px;
-}
-
-.contents .detail .select-btn a:nth-child(1) {
-    border: solid 1px green;
-    color: green;
-}
-
-.contents .detail .select-btn a:nth-child(2) {
-    border: solid 1px blue;
-    color: blue;
-}
-
-.contents .detail .select-btn a:nth-child(3) {
-    border: solid 1px orange;
-    color: orange;
-}
-
-.contents .detail .select-btn a:nth-child(4) {
-    border: solid 1px red;
-    color: red;
-}
-
-.contents .detail .select-btn a:nth-child(5) {
-    border: solid 1px purple;
-    color: purple;
-}
-
-.contents p {
-    font-size: 0.8em;
-    letter-spacing: 0.1em;
-    text-align: center;
-    margin: 10px 0;
+    color: gray;
+    box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 /* chapter_select.html */
 
 .contents .detail .select-btn .chapter_selecter {
     font-size: 0.7em;
-}
-
-.contents .detail .select-btn a:nth-child(1) {
-    border: solid 1px green;
-    color: green;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(2) {
-    border: solid 1px blue;
-    color: blue;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(3) {
-    border: solid 1px orange;
-    color: orange;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(4) {
-    border: solid 1px red;
-    color: red;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(5) {
-    border: solid 1px purple;
-    color: purple;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(6) {
-    border: solid 1px black;
-    color: black;
-}
-
-.contents .detail .select-btn .chapter_selecter:nth-child(7) {
-    border: solid 1px gray;
-    color: gray;
 }
 
 /* for quiz */
@@ -366,7 +326,7 @@ form {
 .gamepad {
     width: 100%;
     height: 410px;
-    background: gainsboro;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     position: fixed;
     bottom: 0;
     z-index: 2;

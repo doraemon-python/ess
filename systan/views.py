@@ -114,6 +114,9 @@ def login_prompt(request):
             student_id = int(student_id)
             if 1 <= student_id <= 999:
                 return redirect('systan:home', 'words', student_id)
+            else:
+                error_message = '入力できるのは001から999までの整数値です。'
+                return render(request, 'systan/login_prompt.html', {'error_message':error_message})
         except:
             error_message = '入力できるのは001から999までの整数値です。'
             return render(request, 'systan/login_prompt.html', {'error_message':error_message})
