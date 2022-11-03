@@ -8,6 +8,10 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+body {
+    font-family:'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic',sans-serif;
+}
+
 a {
     text-decoration: none;
 }
@@ -179,6 +183,7 @@ form {
     color: white;
     border: none;
 }
+
 .login_message {
     width: 80%;
     margin: 20px auto;
@@ -244,7 +249,6 @@ form {
 
 .contents:nth-child(3n-2) {
     background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
-    
 }
 
 .contents:nth-child(3n-1) {
@@ -252,8 +256,7 @@ form {
 }
 
 .contents:nth-child(3n) {
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-    
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);   
 }
 
 .contents:nth-child(even) .detail {
@@ -288,7 +291,7 @@ form {
     display: block;
     width: 80%;
     margin: 0 auto;
-    font-size: 0.8em;
+    font-size: 0.7em;
     text-align: center;
     letter-spacing: 0.2em;
 }
@@ -304,15 +307,18 @@ form {
     line-height: 50px;
     margin: 30px auto;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.3);
     color: gray;
-    box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    /* box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3); */
 }
 
 /* chapter_select.html */
 
 .contents .detail .select-btn .chapter_selecter {
     font-size: 0.7em;
+    font-weight: bold;
 }
 
 /* for quiz */
@@ -332,7 +338,37 @@ form {
     z-index: 2;
 }
 
-.exit {
+.info {
+    width: 100%;
+    display: flex;
+}
+
+.info .left-info {
+    width: 30%;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    display: flex;
+    font-size: 0.8em;
+    justify-content: center;
+}
+
+.info .left-info .cycle {
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    border: solid 2px #0d6efd;
+    margin: auto 0;
+}
+
+.info .left-info img {
+    width: 20px;
+    height: 20px;
+    margin: auto 0;
+}
+
+.info .exit {
     display: block;
     width: 30%;
     height: 40px;
@@ -345,6 +381,20 @@ form {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     cursor: pointer;
     font-size: 0.8em;
+}
+
+.info .right-info {
+    width: 30%;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 0.5em;
+}
+
+.info .right-info span {
+    font-size: 1.5em;
+    color: #198754;
 }
 
 .question {

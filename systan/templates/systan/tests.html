@@ -19,7 +19,13 @@
     </form>
 </div>
 <div class="gamepad">
-    <a class="exit" href="{% url 'systan:home' type student_id %}">中断</a>
+    <div class="info">
+        <div class="left-info">
+            <div class="cycle"></div><p class="correct_number">0</p><img src="{% static 'systan/picture/checkbox.svg' %}" alt=""><p class="incorrect_number">0</p>
+        </div>
+        <a class="exit" href="{% url 'systan:home' type student_id %}">中断</a>
+        <div class="right-info"><span id="quiz_number">1</span>問目/<span id="quiz_length">?</span></div>
+    </div>
     <div class="question">ここに問題が表示されます。</div>
     <div class="answer">解答を表示</div>
     <div class="select">
