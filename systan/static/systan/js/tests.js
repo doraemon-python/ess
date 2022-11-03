@@ -46,6 +46,7 @@ function quiz(CheckedOrNot) {
     if(i>=question_list.length){
         document.querySelector('.gamepad').style.display = 'none';
     };
+    window.navigator.vibrate(50);
 }
 
 correct_btn.addEventListener('click', (e) => {

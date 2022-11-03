@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="{% static 'systan/css/style.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
+<body ontouchstart="">
     <header>
-        <div class="now-app"><img src="{% static 'systan/picture/systan.jpg' %}" alt=""></div>
-        <a href="{% url 'systan:home' type student_id %}"><img src="{% static 'systan/picture/image1.png' %}" alt=""></a>
+        <a href="{% url 'systan:home' type student_id %}"><img src="{% static 'systan/picture/icon.jpg' %}" alt="">ESS</a>
         <nav>
             <div class="bar"></div>
             <div class="bar"></div>
