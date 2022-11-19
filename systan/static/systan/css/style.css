@@ -40,6 +40,17 @@ header a {
     line-height: 60px;
     color: black;
     font-family: Charter-BlackItalic, serif;
+    background: linear-gradient(90deg, #4158D0, #C850C0, #FFCC70);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% auto;
+    animation: gradientEffect 1.5s infinite alternate;
+}
+
+@keyframes gradientEffect {
+    from {background-position: left;}
+    to {background-position: right;}
 }
 
 header a img {
