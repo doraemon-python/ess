@@ -4,66 +4,35 @@ from .models import Words, Phrases, Student, WordsFalse, PhrasesFalse
 import random
 
 def mkDataSet(type, stage, chapter, mode, student_id):
-    start_index = 0
-    end_index = 0
-    japanese_list = []
-    english_list = []
-    index_list = []
+    start_end_index = {
+        'Stage1': [(1, 100), (101, 200), (201, 300), (301, 400), (401, 500), (501, 600),],
+        'Stage2': [(601, 700), (701, 800), (801, 900), (901, 1000), (1001, 1100), (1101, 1200),],
+        'Stage3': [(1201, 1300), (1301, 1400), (1401, 1500), (1501, 1600), (1601, 1700),],
+        'Stage4': [(1701, 1800), (1801, 1900), (1901, 2027),],
+        'Stage5': [(2028, 2127), (2128, 2227), (2228, 2327), (2328, 2445),],
+    }
+    japanese_list, english_list, index_list = [], [], []
+    
     try:
         chapter = int(chapter)
-        if stage =='Stage1':
-            start_index = 100*chapter - 99
-            end_index = 100*chapter
-        elif stage == 'Stage2':
-            start_index = 100*chapter + 501
-            end_index = 100*chapter + 600
-        elif stage == 'Stage3':
-            start_index = 100*chapter + 1101
-            end_index = 100*chapter + 1200
-        elif stage == 'Stage4':
-            if chapter <= 2:
-                start_index = 100*chapter + 1601
-                end_index = 100*chapter + 1700
-            else:
-                start_index = 1901
-                end_index = 2027
-        elif stage == 'Stage5':
-            if chapter <= 3:
-                start_index = 100*chapter + 1928
-                end_index = 100*chapter + 2107
-            else:
-                start_index = 2408
-                end_index = 2445
+        (start_index, end_index) = start_end_index[stage][chapter+1]
     except:
-        if stage == 'Stage1':
-            start_index = 1
-            end_index = 600
-        elif stage == 'Stage2':
-            start_index = 601
-            end_index = 1200
-        elif stage == 'Stage3':
-            start_index = 1201
-            end_index = 1700
-        elif stage == 'Stage4':
-            start_index = 1701
-            end_index = 2027
-        elif stage == 'Stage5':
-            start_index = 2028
-            end_index = 2445
+        start_index = start_end_index[stage][0][0]
+        end_index = start_end_index[stage][-1][1]
     if mode == 'review':
         if type == 'words':
-            object_list = WordsFalse.objects.filter(student_id=student_id, words_id__gte=start_index, words_id__lte=end_index)
+            object_list = WordsFalse.objects.filter(student_id=student_id, words_id__gte=start_index, words_id__lte=end_index, state=True)
             if len(object_list) >= 1:
                 for i in random.sample(range(len(object_list)), len(object_list)):
-                    japanese_list.append(Words.objects.get(id=object_list[i].words_id).japanese)
-                    english_list.append(Words.objects.get(id=object_list[i].words_id).english)
+                    japanese_list.append(object_list[i].words.japanese)
+                    english_list.append(object_list[i].words.english)
                     index_list.append(object_list[i].words_id)
         elif type == 'phrases':
-            object_list = PhrasesFalse.objects.filter(student_id=student_id, phrases_id__gte=start_index, phrases_id__lte=end_index)
+            object_list = PhrasesFalse.objects.filter(student_id=student_id, phrases_id__gte=start_index, phrases_id__lte=end_index, state=True)
             if len(object_list) >= 1:
                 for i in random.sample(range(len(object_list)), len(object_list)):
-                    japanese_list.append(Phrases.objects.get(id=object_list[i].phrases_id).japanese)
-                    english_list.append(Phrases.objects.get(id=object_list[i].phrases_id).english)
+                    japanese_list.append(object_list[i].phrases.japanese)
+                    english_list.append(object_list[i].phrases.english)
                     index_list.append(object_list[i].phrases_id)
     elif mode == 'random':
         if type == 'words':
@@ -88,21 +57,17 @@ def mkDataSet(type, stage, chapter, mode, student_id):
 def words_register_false(all_id, false_id, student_id):
     for id in all_id:
         if id in false_id:
-            WordsFalse.objects.update_or_create(student_id=student_id, words_id=id)
+            WordsFalse.objects.update_or_create(student_id=student_id, words_id=id, defaults={'state': True})
         else:
-            if WordsFalse.objects.filter(student_id=student_id, words_id=id).exists():
-                WordsFalse.objects.filter(student_id=student_id, words_id=id).delete()
+            WordsFalse.objects.update_or_create(student_id=student_id, words_id=id, defaults={'state': False})
     Student.objects.get(id=student_id).save()
 
 def phrases_register_false(all_id, false_id, student_id):
     for id in all_id:
         if id in false_id:
-            PhrasesFalse.objects.update_or_create(student_id=student_id, phrases_id=id)
+            PhrasesFalse.objects.update_or_create(student_id=student_id, phrases_id=id, defaults={'state': True})
         else:
-            if PhrasesFalse.objects.filter(student_id=student_id, phrases_id=id).exists():
-                PhrasesFalse.objects.filter(student_id=student_id, phrases_id=id).delete()
-            else:
-                pass
+            PhrasesFalse.objects.update_or_create(student_id=student_id, phrases_id=id, defaults={'state': False})
     Student.objects.get(id=student_id).save()
 
 # Create your views here.

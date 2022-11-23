@@ -16,8 +16,10 @@ class WordsFalse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     words = models.ForeignKey(Words, on_delete=models.CASCADE)
     miss_date = models.DateTimeField(auto_now=True)
+    state = models.BooleanField()
 
 class PhrasesFalse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     phrases = models.ForeignKey(Phrases, on_delete=models.CASCADE)
     miss_date = models.DateTimeField(auto_now=True)
+    state = models.BooleanField()
