@@ -1,10 +1,105 @@
+{% load static %}
 <div class="dash_bord">
-    <div class="bord-header">
-        <h1>生徒番号:{{student_id}}</h1>
-    </div>
-    <div class="bord_body">
-        <p>前回の学習日</p>
-        <p>{% if latest_login %}{{latest_login | date:'m/d H:i'}}{% else %}なし{% endif %}</p>
+    <input type="checkbox" name="student_info" id="student_info">
+    <label for="student_info" class="student_info_label">生徒番号: {{student_id}}
+        <div class="state">+</div>
+    </label>
+    <div class="student_info_content">
+        <ul>
+            <li class="latest_login">
+                <p>前回の学習</p>
+                <p>{{latest_login|date:"n/j H:i"}}</p>
+            </li>
+            <li class="score">
+                <p>Stage1</p>
+                <div class="detail">
+                    <div class="cycle"></div><span id="s1-1">?</span>
+                    <img src="{% static 'systan/picture/checkbox.svg' %}" alt="" srcset=""><span id="s1-2">?</span>
+                    未<span id="s1-3">?</span>
+                </div>
+            </li>
+            <li class="statebar">
+                <div id="s1-1-bar" class="bar-blue"></div>
+                <div id="s1-2-bar" class="bar-red"></div>
+                <div id="s1-3-bar" class="bar-gray"></div>
+            </li><li class="score">
+                <p>Stage2</p>
+                <div class="detail">
+                    <div class="cycle"></div><span id="s2-1">?</span>
+                    <img src="{% static 'systan/picture/checkbox.svg' %}" alt="" srcset=""><span id="s2-2">?</span>
+                    未<span id="s2-3">?</span>
+                </div>
+            </li>
+            <li class="statebar">
+                <div id="s2-1-bar" class="bar-blue"></div>
+                <div id="s2-2-bar" class="bar-red"></div>
+                <div id="s2-3-bar" class="bar-gray"></div>
+            </li><li class="score">
+                <p>Stage3</p>
+                <div class="detail">
+                    <div class="cycle"></div><span id="s3-1">?</span>
+                    <img src="{% static 'systan/picture/checkbox.svg' %}" alt="" srcset=""><span id="s3-2">?</span>
+                    未<span id="s3-3">?</span>
+                </div>
+            </li>
+            <li class="statebar">
+                <div id="s3-1-bar" class="bar-blue"></div>
+                <div id="s3-2-bar" class="bar-red"></div>
+                <div id="s3-3-bar" class="bar-gray"></div>
+            </li>
+            <li class="score">
+                <p>Stage4</p>
+                <div class="detail">
+                    <div class="cycle"></div><span id="s4-1">?</span>
+                    <img src="{% static 'systan/picture/checkbox.svg' %}" alt="" srcset=""><span id="s4-2">?</span>
+                    未<span id="s4-3">?</span>
+                </div>
+            </li>
+            <li class="statebar">
+                <div id="s4-1-bar" class="bar-blue"></div>
+                <div id="s4-2-bar" class="bar-red"></div>
+                <div id="s4-3-bar" class="bar-gray"></div>
+            </li>
+            {% if type == 'phrases' %}
+            <li class="score">
+                <p>Stage5</p>
+                <div class="detail">
+                    <div class="cycle"></div><span id="s5-1">?</span>
+                    <img src="{% static 'systan/picture/checkbox.svg' %}" alt="" srcset=""><span id="s5-2">?</span>
+                    未<span id="s5-3">?</span>
+                </div>
+            </li>
+            <li class="statebar">
+                <div id="s5-1-bar" class="bar-blue"></div>
+                <div id="s5-2-bar" class="bar-red"></div>
+                <div id="s5-3-bar" class="bar-gray"></div>
+            </li>
+            <script>
+                const studentInfoContent = document.querySelector('.student_info_content');
+                studentInfoContent.classList.toggle('phrases')
+            </script>
+            {% endif %}
+        </ul>
     </div>
 </div>
-<div class=""></div>
+<script>
+    {% autoescape off %}
+    const progressByStage = {{progress_by_stage}}
+    {% endautoescape %}
+    let i = 0
+    for (let key in progressByStage) {
+        i++;
+        document.getElementById('s'+i+'-1').textContent = progressByStage[key][0]
+        document.getElementById('s'+i+'-2').textContent = progressByStage[key][1]
+        document.getElementById('s'+i+'-3').textContent = progressByStage[key][2]
+        sum = progressByStage[key].reduce(function(sum, element){
+            return sum + element
+        }, 0);
+        rate1 = parseInt(progressByStage[key][0]/sum*100)
+        rate2 = parseInt(progressByStage[key][1]/sum*100)
+        rate3 = 100 - rate1 -rate2
+        document.getElementById('s'+i+'-1-bar').style.width = rate1 + '%'
+        document.getElementById('s'+i+'-2-bar').style.width = rate2 + '%'
+        document.getElementById('s'+i+'-3-bar').style.width = rate3 + '%'
+    }
+</script>

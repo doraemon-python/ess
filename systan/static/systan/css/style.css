@@ -209,30 +209,121 @@ form {
 
 /* dash_bord.html */
 
+.dash_bord input {
+    display: none;
+}
+
 .dash_bord {
-    width: 80%;
-    margin: 10px auto;
+    width: 90%;
+    border-top: solid 1px gray;
+    margin: 20px auto;
+}
+
+
+.dash_bord label {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    height: 50px;
+    padding-left: 10px;
+    line-height: 50px;
+    border-bottom: solid 1px gray;
+}
+
+.dash_bord label .state {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    background-color: rgb(200, 200, 200);
     text-align: center;
-    border-radius: 5px;
-    border: solid 1px #198754;
-    color: #198754;
 }
 
-.dash_bord .bord-header {
-    height: 40px;
-    border-radius: 5px 5px 0 0 ;
-    background-color: #198754;
+.dash_bord .student_info_content{
+    height: 0;
+    opacity: 0;
+    transition: .5s;
+    visibility: hidden;
+}
+.dash_bord #student_info:checked + .student_info_label + .student_info_content{
+    height: 217px;
+    opacity: 1;
+    visibility: visible;
 }
 
-.dash_bord .bord-header h1 {
-    line-height: 40px;
+.dash_bord #student_info:checked + .student_info_label + .phrases{
+    height: 261px;
+}
+
+.dash_bord .student_info_content .latest_login {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid 1px gray;
+}
+
+.dash_bord .student_info_content .latest_login p {
     font-size: 0.8em;
-    color: white;
+    line-height: 40px;
 }
 
-.dash_bord .bord_body p {
+.dash_bord .student_info_content .score {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dash_bord .student_info_content .score p {
+    width: 40%;
+    font-size: 0.8em;
+    line-height: 40px;
+    text-align: center;
+}
+
+.dash_bord .student_info_content .score .detail {
+    width: 50%;
     line-height: 40px;
     font-size: 0.7em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dash_bord .student_info_content .score .cycle {
+    width: 18px;
+    height: 18px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: solid 1px #0d6efd;
+}
+
+.dash_bord .student_info_content .score img {
+    margin: 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+.dash_bord .student_info_content .score span {
+    font-size: 1em;
+}
+
+.dash_bord .student_info_content .statebar {
+    width: 100%;
+    height: 2px;
+    display: flex;
+}
+
+.bar-blue {
+    width: 0%;
+    height: 2px;
+    background-color: #0d6efd;
+}
+
+.bar-red {
+    width: 0%;
+    height: 2px;
+    background-color: #dc3545;
+}
+
+.bar-gray {
+    width: 100%;
+    height: 2px;
+    background-color: gray;
 }
 
 /* words_content, phrases_content.html */
@@ -310,7 +401,6 @@ form {
     background-color: rgba(255, 255, 255, 0.3);
     color: gray;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-    /* box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.5), 5px 5px 10px 0px rgba(0, 0, 0, 0.3); */
 }
 
 /* chapter_select.html */

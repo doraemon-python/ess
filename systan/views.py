@@ -3,14 +3,36 @@ from django.utils import timezone
 from .models import Words, Phrases, Student, WordsFalse, PhrasesFalse
 import random
 
-def mkDataSet(type, stage, chapter, mode, student_id):
-    start_end_index = {
-        'Stage1': [(1, 100), (101, 200), (201, 300), (301, 400), (401, 500), (501, 600),],
-        'Stage2': [(601, 700), (701, 800), (801, 900), (901, 1000), (1001, 1100), (1101, 1200),],
-        'Stage3': [(1201, 1300), (1301, 1400), (1401, 1500), (1501, 1600), (1601, 1700),],
-        'Stage4': [(1701, 1800), (1801, 1900), (1901, 2027),],
-        'Stage5': [(2028, 2127), (2128, 2227), (2228, 2327), (2328, 2445),],
+start_end_index = {
+    'Stage1': [(1, 100), (101, 200), (201, 300), (301, 400), (401, 500), (501, 600),],
+    'Stage2': [(601, 700), (701, 800), (801, 900), (901, 1000), (1001, 1100), (1101, 1200),],
+    'Stage3': [(1201, 1300), (1301, 1400), (1401, 1500), (1501, 1600), (1601, 1700),],
+    'Stage4': [(1701, 1800), (1801, 1900), (1901, 2027),],
+    'Stage5': [(2028, 2127), (2128, 2227), (2228, 2327), (2328, 2445),],
+}
+
+def count_progress_by_stage(type, student_id):
+    progress_by_stage = {
     }
+
+    for stage, index_of_stage in start_end_index.items():
+        start_index = index_of_stage[0][0]
+        end_index = index_of_stage[-1][1]
+        if type == 'words':
+            if stage == 'Stage5':
+                continue
+            done = len(WordsFalse.objects.filter(student_id=student_id, words_id__gte=start_index, words_id__lte=end_index))
+            incorrect = len(WordsFalse.objects.filter(student_id=student_id, words_id__gte=start_index, words_id__lte=end_index, state=True))
+        elif type == 'phrases':
+            done = len(PhrasesFalse.objects.filter(student_id=student_id, phrases_id__gte=start_index, phrases_id__lte=end_index))
+            incorrect = len(PhrasesFalse.objects.filter(student_id=student_id, phrases_id__gte=start_index, phrases_id__lte=end_index, state=True))
+        correct = done - incorrect
+        all_ = end_index - start_index + 1
+        yet = all_ - done
+        progress_by_stage[stage] = [correct, incorrect, yet]
+    return progress_by_stage
+
+def mkDataSet(type, stage, chapter, mode, student_id):
     japanese_list, english_list, index_list = [], [], []
     
     try:
@@ -89,8 +111,9 @@ def login_prompt(request):
         return render(request, 'systan/login_prompt.html')
 
 def home(request, type, student_id):
-    latest_login = Student.objects.get(id=student_id).latest_login
-    context = {'type':type, 'student_id':student_id, 'latest_login':latest_login}
+    progress_by_stage = count_progress_by_stage(type, student_id)
+    latest_login = Student.objects.get_or_create(id=student_id)[0].latest_login
+    context = {'type':type, 'student_id':student_id, 'latest_login':latest_login, 'progress_by_stage':progress_by_stage}
     return render(request, 'systan/home.html', context)
 
 def chapter_select(request, type, category, stage, mode, student_id):
