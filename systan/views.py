@@ -37,7 +37,7 @@ def mkDataSet(type, stage, chapter, mode, student_id):
     
     try:
         chapter = int(chapter)
-        (start_index, end_index) = start_end_index[stage][chapter+1]
+        (start_index, end_index) = start_end_index[stage][chapter-1]
     except:
         start_index = start_end_index[stage][0][0]
         end_index = start_end_index[stage][-1][1]
