@@ -10,7 +10,6 @@ urlpatterns = [
     path('others/<type>/<student_id>', views.others, name='others'),
     path('game_data_post/', views.game_data_post, name='game_data_post'),
 ]
-
 # type: words, phrases
 # category: tests, show
 # stage: Stage1, 2, 3, 4, 5

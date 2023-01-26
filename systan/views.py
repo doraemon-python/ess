@@ -111,29 +111,32 @@ def login_prompt(request):
         return render(request, 'systan/login_prompt.html')
 
 def home(request, type, student_id):
-    progress_by_stage = count_progress_by_stage(type, student_id)
-    latest_login = Student.objects.get_or_create(id=student_id)[0].latest_login
-    context = {'type':type, 'student_id':student_id, 'latest_login':latest_login, 'progress_by_stage':progress_by_stage}
-    return render(request, 'systan/home.html', context)
+    return service_end(request, type, student_id)
+    # progress_by_stage = count_progress_by_stage(type, student_id)
+    # latest_login = Student.objects.get_or_create(id=student_id)[0].latest_login
+    # context = {'type':type, 'student_id':student_id, 'latest_login':latest_login, 'progress_by_stage':progress_by_stage}
+    # return render(request, 'systan/home.html', context)
 
 def chapter_select(request, type, category, stage, mode, student_id):
-    context = {'type':type, 'category':category, 'stage':stage, 'mode':mode, 'student_id':student_id}
-    return render(request, 'systan/chapter_select.html', context)
+    return service_end(request, type, student_id)
+    # context = {'type':type, 'category':category, 'stage':stage, 'mode':mode, 'student_id':student_id}
+    # return render(request, 'systan/chapter_select.html', context)
 
 def tests(request, type, category, stage, chapter, mode, student_id):
-    japanese_list, english_list, index_list = mkDataSet(type, stage, chapter, mode, student_id)
-    context = {
-        'japanese_list':japanese_list, 
-        'english_list':english_list, 
-        'index_list':index_list, 
-        'type':type, 
-        'category':category, 
-        'student_id':student_id
-    }
-    if category == 'tests':
-        return render(request, 'systan/tests.html', context)
-    elif category == 'show':
-        return render(request, 'systan/show.html', context)
+    return service_end(request, type, student_id)
+    # japanese_list, english_list, index_list = mkDataSet(type, stage, chapter, mode, student_id)
+    # context = {
+    #     'japanese_list':japanese_list, 
+    #     'english_list':english_list, 
+    #     'index_list':index_list, 
+    #     'type':type, 
+    #     'category':category, 
+    #     'student_id':student_id
+    # }
+    # if category == 'tests':
+    #     return render(request, 'systan/tests.html', context)
+    # elif category == 'show':
+    #     return render(request, 'systan/show.html', context)
 
 def game_data_post(request):
     student_id = int(request.POST['student_id'])
@@ -149,5 +152,10 @@ def game_data_post(request):
         return redirect(f'/systan/phrases/{student_id}')
 
 def others(request, type, student_id):
-    context = {'type':type, 'student_id':student_id}
-    return render(request, 'systan/others.html', context)
+    return service_end(request, type, student_id)
+    # context = {'type':type, 'student_id':student_id}
+    # return render(request, 'systan/others.html', context)
+
+def service_end(request, type, student_id):
+    context = {'type': type, 'student_id': student_id}
+    return render(request, 'systan/service_end.html', context)

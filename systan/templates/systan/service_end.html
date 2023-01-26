@@ -1,0 +1,39 @@
+{% extends 'systan/layout/index.html' %}
+{% block title %}URL移行のお知らせ{% endblock %}
+{% block content %}
+<div class="url_guid">
+    <h1>URL移行のお知らせ</h1>
+    <p>ESSは別のサーバーに移行しました。</p>
+    <p>コード、アルゴリズムを一新し、とても高速になったESSをご利用ください。</p>
+    <p>※初回ロードに時間がかかることがあります。</p>
+    <a href="https://ess-doraemon.netlify.app/{{student_id}}/words">新しいURLはこちら</a>
+</div>
+<style>
+    .url_guid h1 {
+        font-size: 0.8em;
+        width: 70%;
+        margin: 20px auto;
+        border-bottom: solid 1px gray;
+        text-align: center;
+    }
+    .url_guid p {
+        width: 90%;
+        margin: 10px auto;
+        font-size: 0.7em;
+    }
+    .url_guid a {
+        background-color: #1affab;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 0 10px 0 rgb(0 0 0 / 40%);
+        color: #fff;
+        display: block;
+        width: 70%;
+        height: 50px;
+        font-size: 0.8em;
+        line-height: 50px;
+        margin: 20px auto auto;
+        text-align: center;
+    }
+</style>
+{% endblock content %}
