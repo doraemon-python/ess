@@ -97,7 +97,6 @@ def login_prompt(request):
     if request.method == 'POST':
         student_id = request.POST['student_id']
         try:
-            print(student_id)
             student_id = int(student_id)
             if 1 <= student_id <= 999:
                 return redirect('systan:home', 'words', student_id)
